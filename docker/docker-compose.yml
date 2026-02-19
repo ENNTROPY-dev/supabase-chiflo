@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
     networks:
       default: {}
-      proxy:
+      easypanel-gnowy:
         aliases:
           - gnowy_supabase_kong
     ports:
@@ -459,9 +459,8 @@ services:
       ]
 
 networks:
-  proxy:
+  easypanel-gnowy:
     external: true
-    name: easypanel-gnowy
 
 volumes:
   db-config:
