@@ -461,6 +461,7 @@ services:
 networks:
   proxy:
     external: true
+    name: easypanel-gnowy
 
 volumes:
   db-config:
