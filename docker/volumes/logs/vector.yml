@@ -30,13 +30,13 @@ transforms:
     inputs:
       - project_logs
     route:
-      kong: '.appname == "supabase-kong"'
-      auth: '.appname == "supabase-auth"'
-      rest: '.appname == "supabase-rest"'
-      realtime: '.appname == "realtime-dev.supabase-realtime"'
-      storage: '.appname == "supabase-storage"'
-      functions: '.appname == "supabase-edge-functions"'
-      db: '.appname == "supabase-db"'
+      kong: '.appname == "supabase-chiflo-kong"'
+      auth: '.appname == "supabase-chiflo-auth"'
+      rest: '.appname == "supabase-chiflo-rest"'
+      realtime: '.appname == "supabase-chiflo-realtime"'
+      storage: '.appname == "supabase-chiflo-storage"'
+      functions: '.appname == "supabase-chiflo-edge-functions"'
+      db: '.appname == "supabase-chiflo-db"'
   # Ignores non nginx errors since they are related with kong booting up
   kong_logs:
     type: remap

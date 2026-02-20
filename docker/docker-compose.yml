@@ -10,7 +10,7 @@ name: supabase
 services:
 
   studio:
-    container_name: supabase-studio
+    container_name: supabase-chiflo-studio
     image: supabase/studio:2026.02.16-sha-26c615c
     restart: unless-stopped
     healthcheck:
@@ -416,7 +416,7 @@ services:
       ]
 
   supavisor:
-    container_name: supabase-pooler
+    container_name: supabase-chiflo-pooler
     image: supabase/supavisor:2.7.4
     restart: unless-stopped
     ports:
