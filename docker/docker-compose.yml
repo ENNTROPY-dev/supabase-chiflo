@@ -361,7 +361,7 @@ services:
       ]
 
   db:
-    container_name: supabase-db
+    container_name: supabase-chiflo-db
     image: supabase/postgres:15.8.1.085
     restart: unless-stopped
     volumes:
@@ -416,7 +416,7 @@ services:
       ]
 
   supavisor:
-    container_name: supabase-chiflo-pooler
+    container_name: supabase-pooler
     image: supabase/supavisor:2.7.4
     restart: unless-stopped
     ports:
