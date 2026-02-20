@@ -1,4 +1,4 @@
-﻿# Usage
+# Usage
 #   Start:              docker compose up
 #   With helpers:       docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
 #   Stop:               docker compose down
@@ -73,8 +73,8 @@ services:
         aliases:
           - gnowy_supabase_kong
     ports:
-      - ${KONG_HTTP_PORT}:8000/tcp
-      - ${KONG_HTTPS_PORT}:8443/tcp
+      - ${KONG_HTTP_PORT:-8001}:8000/tcp
+      - ${KONG_HTTPS_PORT:-8444}:8443/tcp
     volumes:
       # https://github.com/supabase/supabase/issues/12661
       - ./volumes/api/kong.yml:/home/kong/temp.yml:ro,z
