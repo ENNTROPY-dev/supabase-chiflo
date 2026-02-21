@@ -304,8 +304,7 @@ services:
       #      - ::1
       #    deny: []
 
-  ## Dashboard (Studio) - catch all remaining routes
-  ## basic-auth removed so /favicon/manifest.json and API calls from browser load (browser often does not send Basic auth on subrequests). Restrict access by firewall/VPN or reverse proxy auth instead.
+  ## Protected Dashboard - catch all remaining routes
   - name: dashboard
     _comment: 'Studio: /* -> http://studio:3000/*'
     url: http://studio:3000/
@@ -316,3 +315,6 @@ services:
           - /
     plugins:
       - name: cors
+      - name: basic-auth
+        config:
+          hide_credentials: true
