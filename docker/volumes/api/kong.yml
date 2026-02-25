@@ -1,9 +1,3 @@
-# Copiar este archivo a tu fork de Supabase como:
-# D:\PROYECTOS\Forks\supabase-chiflo\docker\volumes\api\kong.yml
-#
-# Contiene CORS para https://chiflo.vercel.app y https://chiflo.com
-# (ruta OPTIONS para preflight + origins en auth-v1 y rest-v1)
-
 _format_version: '2.1'
 _transform: true
 
@@ -91,7 +85,7 @@ services:
     plugins:
       - name: cors
 
-  ## Auth CORS preflight: OPTIONS /auth/v1/* sin key-auth para que el navegador reciba Access-Control-Allow-Origin
+  ## Auth CORS preflight: OPTIONS /auth/v1/* sin key-auth; CORS responde con cabeceras
   - name: auth-v1-cors-preflight
     url: http://auth:9999/
     routes:
@@ -108,9 +102,7 @@ services:
             - https://chiflo.vercel.app
             - https://chiflo.com
           credentials: true
-      - name: request-termination
-        config:
-          status_code: 204
+          preflight_continue: false
 
   ## Secure Auth routes
   - name: auth-v1
@@ -128,6 +120,7 @@ services:
             - https://chiflo.vercel.app
             - https://chiflo.com
           credentials: true
+          preflight_continue: false
       - name: key-auth
         config:
           hide_credentials: false
@@ -154,6 +147,7 @@ services:
             - https://chiflo.vercel.app
             - https://chiflo.com
           credentials: true
+          preflight_continue: false
       - name: key-auth
         config:
           hide_credentials: true
@@ -260,7 +254,7 @@ services:
   ## If external access is needed, add routes with key-auth matching Logflare's x-api-key auth.
   # - name: analytics-v1-api
   #   _comment: 'Analytics: /analytics/v1/api/endpoints/* -> http://logflare:4000/api/endpoints/*'
-  #   url: http://analytics:4000/api/endpoints
+  #   url: http://logflare:4000/api/endpoints
   #   routes:
   #     - name: analytics-v1-api
   #       strip_path: true
@@ -268,7 +262,7 @@ services:
   #         - /analytics/v1/api/endpoints/
   # - name: analytics-v1
   #   _comment: 'Analytics: /analytics/v1/* -> http://logflare:4000/*'
-  #   url: http://analytics:4000/
+  #   url: http://logflare:4000/
   #   routes:
   #     - name: dashboard-v1-all
   #       strip_path: true
@@ -282,7 +276,7 @@ services:
 
   ## Secure Database routes
   - name: meta
-    _comment: 'pg-meta: /pg/* -> http://pg-meta:8080/*'
+    _comment: 'pg-meta: /pg/* -> http://meta:8080/*'
     url: http://meta:8080/
     routes:
       - name: meta-all
