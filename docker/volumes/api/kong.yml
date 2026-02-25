@@ -1,3 +1,9 @@
+# Copiar este archivo a tu fork de Supabase como:
+# D:\PROYECTOS\Forks\supabase-chiflo\docker\volumes\api\kong.yml
+#
+# Contiene CORS para https://chiflo.vercel.app y https://chiflo.com
+# (ruta OPTIONS para preflight + origins en auth-v1 y rest-v1)
+
 _format_version: '2.1'
 _transform: true
 
@@ -85,6 +91,27 @@ services:
     plugins:
       - name: cors
 
+  ## Auth CORS preflight: OPTIONS /auth/v1/* sin key-auth para que el navegador reciba Access-Control-Allow-Origin
+  - name: auth-v1-cors-preflight
+    url: http://auth:9999/
+    routes:
+      - name: auth-v1-cors-preflight-route
+        strip_path: true
+        paths:
+          - /auth/v1/
+        methods:
+          - OPTIONS
+    plugins:
+      - name: cors
+        config:
+          origins:
+            - https://chiflo.vercel.app
+            - https://chiflo.com
+          credentials: true
+      - name: request-termination
+        config:
+          status_code: 204
+
   ## Secure Auth routes
   - name: auth-v1
     _comment: 'GoTrue: /auth/v1/* -> http://auth:9999/*'
@@ -96,6 +123,11 @@ services:
           - /auth/v1/
     plugins:
       - name: cors
+        config:
+          origins:
+            - https://chiflo.vercel.app
+            - https://chiflo.com
+          credentials: true
       - name: key-auth
         config:
           hide_credentials: false
@@ -117,6 +149,11 @@ services:
           - /rest/v1/
     plugins:
       - name: cors
+        config:
+          origins:
+            - https://chiflo.vercel.app
+            - https://chiflo.com
+          credentials: true
       - name: key-auth
         config:
           hide_credentials: true
