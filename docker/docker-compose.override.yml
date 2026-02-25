@@ -1,0 +1,35 @@
+# Override para forzar nombres de contenedor únicos (evitar conflicto en Easypanel)
+# Easypanel ejecuta: compose -f docker-compose.yml -f docker-compose.override.yml
+# Este archivo tiene prioridad y asegura los nombres supabase-chiflo-*
+# (actualizado 2026-02-25)
+# Servicio "supabase": Easypanel puede esperar un servicio con el nombre del app.
+# Lo definimos aquí con imagen mínima para que el compose sea válido.
+# Para el dominio (chiflo.enntropy.com), en Easypanel el Destino debe ser el servicio "kong", no "supabase"
+
+services:
+  supabase:
+    image: alpine:3.19
+    entrypoint: ["sleep", "infinity"]
+    container_name: supabase-chiflo-placeholder
+  studio:
+    container_name: supabase-chiflo-studio
+  kong:
+    container_name: supabase-chiflo-kong
+  auth:
+    container_name: supabase-chiflo-auth
+  rest:
+    container_name: supabase-chiflo-rest
+  realtime:
+    container_name: supabase-chiflo-realtime
+  storage:
+    container_name: supabase-chiflo-storage
+  imgproxy:
+    container_name: supabase-chiflo-imgproxy
+  meta:
+    container_name: supabase-chiflo-meta
+  functions:
+    container_name: supabase-chiflo-edge-functions
+  db:
+    container_name: supabase-chiflo-db
+  supavisor:
+    container_name: supabase-chiflo-pooler

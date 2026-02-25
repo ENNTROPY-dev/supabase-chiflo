@@ -2,4 +2,4 @@ volumes/db/data
 volumes/storage
 .env
 test.http
-docker-compose.override.yml
+# docker-compose.override.yml  # descomentado para trackear en Easypanel
