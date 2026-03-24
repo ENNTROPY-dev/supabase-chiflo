@@ -105,6 +105,15 @@ services:
             - https://admin.chiflo.es
           credentials: true
           preflight_continue: false
+          headers:
+            - Accept
+            - Accept-Language
+            - Content-Type
+            - Authorization
+            - apikey
+            - x-client-info
+            - X-Requested-With
+            - prefer
 
   ## Secure Auth routes
   - name: auth-v1
@@ -125,6 +134,15 @@ services:
             - https://admin.chiflo.es
           credentials: true
           preflight_continue: false
+          headers:
+            - Accept
+            - Accept-Language
+            - Content-Type
+            - Authorization
+            - apikey
+            - x-client-info
+            - X-Requested-With
+            - prefer
       - name: key-auth
         config:
           hide_credentials: false
@@ -154,6 +172,15 @@ services:
             - https://admin.chiflo.es
           credentials: true
           preflight_continue: false
+          headers:
+            - Accept
+            - Accept-Language
+            - Content-Type
+            - Authorization
+            - apikey
+            - x-client-info
+            - X-Requested-With
+            - prefer
       - name: key-auth
         config:
           hide_credentials: true
