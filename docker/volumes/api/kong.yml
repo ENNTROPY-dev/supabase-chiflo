@@ -100,7 +100,9 @@ services:
         config:
           origins:
             - https://chiflo.vercel.app
-            - https://chiflo.com
+            - https://chiflo.es
+            - https://www.chiflo.es
+            - https://admin.chiflo.es
           credentials: true
           preflight_continue: false
 
@@ -118,7 +120,9 @@ services:
         config:
           origins:
             - https://chiflo.vercel.app
-            - https://chiflo.com
+            - https://chiflo.es
+            - https://www.chiflo.es
+            - https://admin.chiflo.es
           credentials: true
           preflight_continue: false
       - name: key-auth
@@ -145,7 +149,9 @@ services:
         config:
           origins:
             - https://chiflo.vercel.app
-            - https://chiflo.com
+            - https://chiflo.es
+            - https://www.chiflo.es
+            - https://admin.chiflo.es
           credentials: true
           preflight_continue: false
       - name: key-auth
