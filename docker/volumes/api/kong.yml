@@ -112,6 +112,7 @@ services:
             - Authorization
             - apikey
             - x-client-info
+            - x-supabase-api-version
             - X-Requested-With
             - prefer
 
@@ -141,6 +142,7 @@ services:
             - Authorization
             - apikey
             - x-client-info
+            - x-supabase-api-version
             - X-Requested-With
             - prefer
       - name: key-auth
@@ -179,6 +181,7 @@ services:
             - Authorization
             - apikey
             - x-client-info
+            - x-supabase-api-version
             - X-Requested-With
             - prefer
       - name: key-auth
