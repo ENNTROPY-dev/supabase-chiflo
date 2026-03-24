@@ -115,6 +115,10 @@ services:
             - x-supabase-api-version
             - X-Requested-With
             - prefer
+            - accept-profile
+            - content-profile
+            - x-upsert
+            - range
 
   ## Secure Auth routes
   - name: auth-v1
@@ -145,6 +149,10 @@ services:
             - x-supabase-api-version
             - X-Requested-With
             - prefer
+            - accept-profile
+            - content-profile
+            - x-upsert
+            - range
       - name: key-auth
         config:
           hide_credentials: false
@@ -184,6 +192,10 @@ services:
             - x-supabase-api-version
             - X-Requested-With
             - prefer
+            - accept-profile
+            - content-profile
+            - x-upsert
+            - range
       - name: key-auth
         config:
           hide_credentials: true
